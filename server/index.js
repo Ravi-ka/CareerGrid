@@ -3,6 +3,7 @@ dotenv.config();
 import express from "express";
 import { connectToDatabase } from "./config/DbConnection.js";
 import logger from "./utils/logger.js";
+import { errorHandler } from "./middlewares/errorHandler.js";
 
 const app = express();
 app.use(express.json());
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
   });
 });
 
+app.use(errorHandler); // Application level error handler
 app.listen(process.env.PORT || 5001, (err) => {
   if (err) return console.log(err);
   console.log(`Server is running on port ${process.env.PORT}`);
