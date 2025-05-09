@@ -1,3 +1,10 @@
+<div align="left">
+  <img src="https://img.shields.io/static/v1?message=In-Progress&logo=itch&label=Project%20Status&color=000000&logoColor=white&labelColor=&style=for-the-badge" height="25" alt="itch logo"  />
+</div>
+<div align="left">
+  <img src="https://img.shields.io/static/v1?message=View%20dev%20branch%20for%20the%20updates&logo=itch&label=%20&color=000000&logoColor=white&labelColor=&style=for-the-badge" height="25" alt="itch logo"  />
+</div>
+
 # CareerGrid : Monolithic Architecture Structure
 
 ## Project Overview
