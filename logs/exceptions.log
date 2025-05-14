@@ -1,0 +1,27 @@
+2025-05-09T07:21:47.723Z [ERROR]: uncaughtException: error is not defined
+ReferenceError: error is not defined
+    at file:///C:/Users/ravisankar.ka/code/CareerGrid/server/index.js:20:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:98:5)
+2025-05-09T11:37:50.454Z [ERROR]: uncaughtException: app.use() requires a middleware function
+TypeError: app.use() requires a middleware function
+    at Function.use (C:\Users\ravisankar.ka\code\CareerGrid\node_modules\express\lib\application.js:213:11)
+    at file:///C:/Users/ravisankar.ka/code/CareerGrid/server/index.js:21:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:98:5)
+2025-05-09T11:39:36.858Z [ERROR]: uncaughtException: app.use() requires a middleware function
+TypeError: app.use() requires a middleware function
+    at Function.use (C:\Users\ravisankar.ka\code\CareerGrid\node_modules\express\lib\application.js:213:11)
+    at file:///C:/Users/ravisankar.ka/code/CareerGrid/server/index.js:21:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:98:5)
+2025-05-09T11:39:45.167Z [ERROR]: uncaughtException: app.use() requires a middleware function
+TypeError: app.use() requires a middleware function
+    at Function.use (C:\Users\ravisankar.ka\code\CareerGrid\node_modules\express\lib\application.js:213:11)
+    at file:///C:/Users/ravisankar.ka/code/CareerGrid/server/index.js:21:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:271:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:547:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:98:5)

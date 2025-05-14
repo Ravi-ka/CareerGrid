@@ -2,7 +2,9 @@ import { UserAuthModel } from "../models/userSchema.js";
 
 export const ValidateExistingEmailAddress = async (email) => {
   try {
-    return await UserAuthModel.findOne({ email });
+    const data = await UserAuthModel.findOne({ email });
+    console.log(data);
+    return data;
   } catch (error) {
     return console.log(
       "Error occurred while validating the Email address from DB - " + error

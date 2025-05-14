@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import logger from "../utils/logger.js";
 import {
   CreateNewUserService,
   ValidateExistingEmailAddress,
@@ -6,6 +7,7 @@ import {
 
 export const UserRegistration = async (req, res) => {
   try {
+    logger.info(`Incoming request to ${req.originalUrl}`);
     const { userType, email, password, firstName, lastName, phone } = req.body;
     if (!userType || !email || !password || !firstName || !lastName || !phone) {
       return res.status(400).json({
@@ -13,7 +15,7 @@ export const UserRegistration = async (req, res) => {
       });
     }
     const validateEmail = await ValidateExistingEmailAddress(email);
-    if (!validateEmail) {
+    if (validateEmail) {
       return res.status(400).json({
         message: "Email already exists",
       });

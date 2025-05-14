@@ -1,0 +1,4 @@
+2025-05-09T07:25:45.605Z [ERROR]: unhandledRejection: next is not a function
+TypeError: next is not a function
+    at connectToDatabase (file:///C:/Users/ravisankar.ka/code/CareerGrid/server/config/DbConnection.js:13:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
