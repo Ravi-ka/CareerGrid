@@ -17,16 +17,21 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server/index.js",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.14.2",
     "winston": "^3.17.0"
   },
   "devDependencies": {
+    "eslint": "^9.26.0",
+    "eslint-plugin-import": "^2.31.0",
     "nodemon": "^3.1.10"
   }
 }

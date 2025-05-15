@@ -4,6 +4,7 @@ import {
   CreateNewUserService,
   ValidateExistingEmailAddress,
 } from "../services/UserAuthService.js";
+import { GenerateJwtToken } from "../utils/jwtTokenGeneration.js";
 
 export const UserRegistration = async (req, res) => {
   try {
@@ -41,6 +42,38 @@ export const UserRegistration = async (req, res) => {
     });
   } catch (error) {
     return console.log("Controller error while creating a new user");
+  }
+};
+
+export const UserLogin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      return res.status(400).json({
+        message: "Please fill all the fields",
+      });
+    }
+    const validateEmail = await ValidateExistingEmailAddress(email);
+    if (!validateEmail)
+      return res.json({
+        message: `This email address(${email}) is not registered`,
+      });
+    const validatePassword = await bcrypt.compare(
+      password,
+      validateEmail.passwordHash
+    );
+    if (!validatePassword)
+      return res
+        .status(401)
+        .json({ status: "failed", message: "Invalid Username or Password" });
+    const jwtToken = await GenerateJwtToken(validateEmail);
+    return res.status(200).json({
+      status: "success",
+      message: "User logged in successfully",
+      token: jwtToken,
+    });
+  } catch (error) {
+    return console.log("Error while logging in the user - " + error);
   }
 };
 

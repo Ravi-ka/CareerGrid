@@ -3,7 +3,6 @@ import { UserAuthModel } from "../models/userSchema.js";
 export const ValidateExistingEmailAddress = async (email) => {
   try {
     const data = await UserAuthModel.findOne({ email });
-    console.log(data);
     return data;
   } catch (error) {
     return console.log(
