@@ -5,6 +5,12 @@ import {
   ValidateExistingEmailAddress,
 } from "../services/UserAuthService.js";
 import { GenerateJwtToken } from "../utils/jwtTokenGeneration.js";
+import { GenerateRefreshToken } from "../utils/refreshToken.js";
+import {
+  SaveRefreshToken,
+  ValidateRefreshToken,
+} from "../services/RefreshTokenService.js";
+import { VerifyRefreshToken } from "../utils/verifyRefreshToken.js";
 
 export const UserRegistration = async (req, res) => {
   try {
@@ -66,15 +72,43 @@ export const UserLogin = async (req, res) => {
       return res
         .status(401)
         .json({ status: "failed", message: "Invalid Username or Password" });
-    const jwtToken = await GenerateJwtToken(validateEmail);
+    const jwtAccessToken = GenerateJwtToken(validateEmail);
+    const jwtRefreshToken = GenerateRefreshToken(validateEmail);
+    await SaveRefreshToken(validateEmail, jwtRefreshToken);
     return res.status(200).json({
       status: "success",
       message: "User logged in successfully",
-      token: jwtToken,
+      access_token: jwtAccessToken,
+      refresh_token: jwtRefreshToken,
     });
   } catch (error) {
     return console.log("Error while logging in the user - " + error);
   }
 };
 
+export const RefreshToken = async (req, res) => {
+  try {
+    const { refreshToken } = req.body;
+    if (!refreshToken)
+      return res.status(400).json({
+        status: "failed",
+        message: "refreshToken is missing in req.body",
+      });
+    const tokenDoc = await ValidateRefreshToken(refreshToken);
+    if (!tokenDoc) {
+      return res
+        .status(403)
+        .json({ message: "Refresh token not found, login again" });
+    }
+    const user = VerifyRefreshToken(refreshToken);
+    const newToken = GenerateJwtToken(user);
+    return res.status(201).json({
+      status: "success",
+      message: "New token generated",
+      new_token: newToken,
+    });
+  } catch (error) {
+    return console.log("Error on refreshToken controller: " + error);
+  }
+};
 // ! Add logger and errorHandler
